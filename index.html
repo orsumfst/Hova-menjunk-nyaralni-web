@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utazás Tervező</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Modal háttér -->
+<div id="howToModal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal" class="close-btn">&times;</span>
+    <h2>Hogyan használd az oldalt?</h2>
+    <p>
+      <strong>Lépések:</strong><br><br>
+      • Válaszd ki az indulás és érkezés dátumát<br>
+      • Add meg a minimum és maximum hőmérsékletet<br>
+      • Válaszd ki a helyszín típusát (város, tengerpart, hegyek)<br>
+      • Válaszd ki az időjárási preferenciákat (napos, felhős, stb.)<br>
+      • Több opciót is kiválaszthatsz egyszerre!<br>
+      • Kattints a "Keresés" gombra<br>
+      • Az oldal megjeleníti a megfelelő városokat időjárási adatokkal<br><br>
+      Nyaralj a neked megfelelő időjárásban! 🙂
+    </p>
+  </div>
+</div>
+
+<!-- Fejléc -->
+<header class="app-header">
+  <h1 id="appTitle">Utazás Tervező</h1>
+
+  <div class="header-center-controls">
+    <!-- Téma váltó gomb -->
+    <button id="themeToggle" title="Téma váltása">
+      <span id="themeIcon">🌙</span>
+    </button>
+    <!-- Zászlók -->
+    <img id="flagHU" src="hungary.png" alt="Hungarian flag" style="width:30px; cursor:pointer;">
+    <img id="flagEN" src="united-kingdom.png" alt="English flag" style="width:30px; cursor:pointer;">
+  </div>
+
+  <!-- Három csík a jobb felső sarokban -->
+  <div id="infoMenuToggle">
+    <div class="info-bar"></div>
+    <div class="info-bar"></div>
+    <div class="info-bar"></div>
+  </div>
+</header>
+
+<!-- Info menü, alapból rejtve -->
+<div id="infoMenu" class="info-menu">
+  <ul>
+    <li id="howToUse">Hogyan használd az oldalt?</li>
+
+    <li>
+      <a href="https://github.com" target="_blank">
+        <img src="github (2).png" class="social-icon"> GitHub
+      </a>
+    </li>
+
+    <li>
+      <a href="https://facebook.com/" target="_blank">
+        <img src="facebook.png" class="social-icon"> Facebook
+      </a>
+    </li>
+
+    <li>
+      <a href="https://instagram.com/" target="_blank">
+        <img src="instagram (1).png" class="social-icon"> Instagram
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="input-container">
+  <div class="date-container">
+    <div class="date-input">
+      <label for="startDate">Indulás dátuma:</label>
+      <input type="date" id="startDate">
+    </div>
+    <div class="date-input">
+      <label for="endDate">Érkezés dátuma:</label>
+      <input type="date" id="endDate">
+    </div>
+  </div>
+
+  <label for="minTemp">Min hőmérséklet (°C):</label>
+  <input type="number" id="minTemp" placeholder="Pl.: 10" value="15">
+  
+  <label for="maxTemp">Max hőmérséklet (°C):</label>
+  <input type="number" id="maxTemp" placeholder="Pl.: 25" value="30">
+
+  <div class="selection-group">
+    <h3 id="locationTitle">📍 Helyszín típusa:</h3>
+    <div class="btn-grid">
+      <button class="select-btn location-btn" data-type="city">🏛️ Város</button>
+      <button class="select-btn location-btn" data-type="coastal">🏖️ Tengerpart</button>
+      <button class="select-btn location-btn" data-type="mountain">🏔️ Hegyek</button>
+    </div>
+  </div>
+
+  <div class="selection-group">
+    <h3 id="weatherTitle">☀️ Időjárási preferenciák:</h3>
+    <div class="btn-grid">
+      <button class="select-btn weather-btn" data-type="sunny">☀️ Napos</button>
+      <button class="select-btn weather-btn" data-type="cloudy">☁️ Felhős</button>
+      <button class="select-btn weather-btn" data-type="rainy">🌧️ Esős</button>
+      <button class="select-btn weather-btn" data-type="snowy">❄️ Havas</button>
+    </div>
+  </div>
+
+  <button id="searchBtn">Keresés</button>
+  <div id="status"></div>
+</div>
+
+<div id="results"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
