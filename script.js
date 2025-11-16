@@ -1,16 +1,16 @@
-// Globális változók
+
 let currentLang = 'hu';
 let selectedLocations = [];
 let selectedWeather = [];
 
-// Elem referenciák
+
 const statusEl = document.getElementById("status");
 const resultsEl = document.getElementById("results");
 const themeToggleBtn = document.getElementById("themeToggle");
 const appTitle = document.getElementById("appTitle");
 const themeIcon = document.getElementById("themeIcon");
 
-// Példa városok különböző típusokkal
+
 const cities = [
   { name: 'Paris', country: 'France', countryCode: 'FR', types: ['city'], lat: 48.8566, lon: 2.3522 },
   { name: 'Barcelona', country: 'Spain', countryCode: 'ES', types: ['city', 'coastal'], lat: 41.3851, lon: 2.1734 },
@@ -40,7 +40,7 @@ const cities = [
   { name: 'Edinburgh', country: 'United Kingdom', countryCode: 'GB', types: ['city', 'mountain'], lat: 55.9533, lon: -3.1883 }
 ];
 
-// Nyelvek
+
 const translations = {
   hu: {
     title: "Utazás Tervező",
@@ -113,7 +113,7 @@ const translations = {
 class CountryAPI {
   constructor() {
     this.baseUrl = 'https://restcountries.com/v3.1';
-    this.cache = {}; // Cache az országadatokhoz
+    this.cache = {}; 
   }
 
   async getCountryInfo(countryCode) {
@@ -248,7 +248,7 @@ class WeatherAPI {
 const weatherAPI = new WeatherAPI();
 const countryAPI = new CountryAPI();
 
-// Téma váltás (nap/hold)
+// (nap/hold)
 themeToggleBtn.addEventListener("click", () => {
   document.body.classList.toggle("light-theme");
   if (document.body.classList.contains("light-theme")) {
@@ -258,7 +258,7 @@ themeToggleBtn.addEventListener("click", () => {
   }
 });
 
-// Nyelvváltás zászlókkal
+// valtas zaszlokkal
 document.getElementById("flagHU").addEventListener("click", () => setLanguage("hu"));
 document.getElementById("flagEN").addEventListener("click", () => setLanguage("en"));
 
@@ -275,12 +275,11 @@ function setLanguage(lang) {
   document.getElementById("locationTitle").textContent = t.locationTitle;
   document.getElementById("weatherTitle").textContent = t.weatherTitle;
 
-  // Helyszín gombok
+  
   document.querySelector('.location-btn[data-type="city"]').textContent = t.city;
   document.querySelector('.location-btn[data-type="coastal"]').textContent = t.coastal;
   document.querySelector('.location-btn[data-type="mountain"]').textContent = t.mountain;
 
-  // Időjárás gombok
   document.querySelector('.weather-btn[data-type="sunny"]').textContent = t.sunny;
   document.querySelector('.weather-btn[data-type="cloudy"]').textContent = t.cloudy;
   document.querySelector('.weather-btn[data-type="rainy"]').textContent = t.rainy;
@@ -288,7 +287,7 @@ function setLanguage(lang) {
   
 }
 
-// Helyszín típus gombok
+// Helyszin tipus gombok
 const locationBtns = document.querySelectorAll('.location-btn');
 
 locationBtns.forEach(btn => {
@@ -306,7 +305,7 @@ locationBtns.forEach(btn => {
   });
 });
 
-// Időjárás típus gombok
+// Idojaras típus gombok
 const weatherBtns = document.querySelectorAll('.weather-btn');
 
 weatherBtns.forEach(btn => {
@@ -324,7 +323,7 @@ weatherBtns.forEach(btn => {
   });
 });
 
-// Info menü toggle
+
 const infoToggle = document.getElementById("infoMenuToggle");
 const infoMenu = document.getElementById("infoMenu");
 
@@ -333,14 +332,14 @@ infoToggle.addEventListener("click", (e) => {
   infoMenu.style.display = infoMenu.style.display === "block" ? "none" : "block";
 });
 
-// Menü bezárás amikor máshova kattintasz
+
 document.addEventListener("click", (e) => {
   if (!infoMenu.contains(e.target) && !infoToggle.contains(e.target)) {
     infoMenu.style.display = "none";
   }
 });
 
-// Modal (Hogyan használd)
+// hogyan hasznald az oldalt
 const howToModal = document.getElementById("howToModal");
 const howToUseBtn = document.getElementById("howToUse");
 const closeModalBtn = document.getElementById("closeModal");
@@ -376,7 +375,7 @@ function matchesWeatherPreference(weather, selectedWeather) {
   });
 }
 
-// Keresés indítása
+// Kereses 
 async function startSearch() {
   const minTemp = parseFloat(document.getElementById("minTemp").value);
   const maxTemp = parseFloat(document.getElementById("maxTemp").value);
@@ -395,7 +394,7 @@ async function startSearch() {
 
   let matchingCities = cities;
   
-  // Szűrés helyszín típus alapján
+  // Szures helyszín tipus alapjan
   if (selectedLocations.length > 0) {
     matchingCities = matchingCities.filter(city => 
       city.types.some(type => selectedLocations.includes(type))
@@ -430,14 +429,14 @@ async function startSearch() {
   statusEl.className = '';
 
   results.forEach(result => {
-    // Időjárás GIF kiválasztása
+    // Idojárás GIF 
     let weatherGif = '';
     if (result.weather.temp < 0) {
-      weatherGif = 'Weather-snow.gif'; // Havas / hideg idő
+      weatherGif = 'Weather-snow.gif'; 
     } else if (result.weather.clouds < 50) {
-      weatherGif = 'Weather-sunny.gif'; // Napos
+      weatherGif = 'Weather-sunny.gif'; 
     } else {
-      weatherGif = 'Weather-partly-cloudy.gif'; // Részben felhős / borult
+      weatherGif = 'Weather-partly-cloudy.gif'; 
     }
 
     const card = document.createElement('div');
@@ -497,10 +496,10 @@ async function startSearch() {
   });
 }
 
-// Gomb esemény
+
 document.getElementById("searchBtn").addEventListener("click", startSearch);
 
-// Dátum inicializálás
+
 const today = new Date().toISOString().split('T')[0];
 document.getElementById('startDate').value = today;
 const nextWeek = new Date();

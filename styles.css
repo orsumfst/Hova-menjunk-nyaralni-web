@@ -9,9 +9,7 @@ body {
   padding-top: 80px;
 }
 
-/* -----
-   Header
------- */
+
 .app-header {
   position: fixed;
   top: 0;
@@ -27,7 +25,7 @@ body {
   height: 50px;
 }
 
-/* Kontener középre */
+
 .header-center-controls {
   display: flex;
   align-items: center;
@@ -38,7 +36,7 @@ body {
   transform: translateX(-50%); 
 }
 
-/* Téma gomb*/
+
 #themeToggle {
   width: 30px;
   height: 30px;
@@ -97,7 +95,7 @@ input {
   box-sizing: border-box;
 }
 
-/* Dátumok egymás mellett */
+
 .date-container {
   display: flex;
   gap: 10px;
@@ -122,7 +120,7 @@ input {
   border: 1px solid #ccc;
 }
 
-/* Választási csoportok */
+
 .selection-group {
   margin: 20px 0;
 }
@@ -331,7 +329,7 @@ body.light-theme .forecast-day strong {
   color: #0056b3;
 }
 
-/* Info menü toggle */
+
 #infoMenuToggle {
   position: absolute;
   right: 70px;
@@ -434,7 +432,7 @@ body.light-theme #infoMenu {
   color: #000;
 }
 
-/* Betöltés és hibák */
+/* betoltes/hibak */
 .loading {
   text-align: center;
   padding: 20px;
